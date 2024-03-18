@@ -1,0 +1,47 @@
+import random
+import time
+
+class TrafficSensor:
+    def __init__(self, location):
+        self.location = location
+    
+    def detect_vehicle_count(self):
+        # Simulate vehicle detection
+        return random.randint(0, 100)
+    
+    def detect_vehicle_speed(self):
+        # Simulate vehicle speed detection
+        return random.randint(20, 100)  # Speed in km/h
+
+class TrafficController:
+    def __init__(self):
+        self.sensors = []
+    
+    def add_sensor(self, sensor):
+        self.sensors.append(sensor)
+    
+    def analyze_traffic(self):
+        for sensor in self.sensors:
+            vehicle_count = sensor.detect_vehicle_count()
+            vehicle_speed = sensor.detect_vehicle_speed()
+            print(f"Location: {sensor.location}, Vehicle Count: {vehicle_count}, Vehicle Speed: {vehicle_speed} km/h")
+            # Add logic for traffic analysis and decision making here
+
+def main():
+    # Create traffic sensors at different locations
+    sensor1 = TrafficSensor("Intersection 1")
+    sensor2 = TrafficSensor("Intersection 2")
+    
+    # Create traffic controller and add sensors
+    controller = TrafficController()
+    controller.add_sensor(sensor1)
+    controller.add_sensor(sensor2)
+    
+    # Simulate traffic analysis every 5 seconds
+    while True:
+        print("Analyzing traffic...")
+        controller.analyze_traffic()
+        time.sleep(5)
+
+if __name__ == "__main__":
+    main()
